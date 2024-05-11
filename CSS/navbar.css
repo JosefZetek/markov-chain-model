@@ -1,0 +1,36 @@
+.radioButtonPanel {
+    margin-left: 5px;
+    text-align: center;
+}
+
+.radioButtonPanel .radioButtonPanelItem {
+    display: grid;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.radioButtonPanelItem:focus {
+    outline: none;
+}
+
+.importItem {
+    margin-bottom: 0px;
+}
+
+.navbar-nav .nav-link{
+    margin-top: 6px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-toggler{
+    position: fixed;
+    right: 1%;
+    top: 9px;
+    transition: none;
+}

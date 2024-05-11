@@ -1,0 +1,25 @@
+<div class="animationPanelContainer">
+    <button type="button" class="btn btn-dark controlButton" id="prevButton">reset</button>
+    <button type="button" class="btn btn-dark controlButton" id="runButton">play</button>
+    <button type="button" class="btn btn-dark controlButton" id="nextButton">next</button>
+    <div class="inputContainer">
+        <label for="iterations">Current: <span id="currentIteration">0</span></label>
+        <label for="iterations">Iterations: </label>
+        <input class="stepInput" id="iterations" min="1" type="number" value="1">
+    </div>
+    <div class="inputContainer">
+        <label for="stepCount">Steps: </label>
+        <input type="number" value="1" id="stepCount" class="stepInput">
+    </div>
+    <div class="inputContainer">
+        <label for="speedSlider">Speed: </label>
+        <input type="range" min="1" max="1500" value="750" class="slider" id="speedSlider">
+    </div>
+    <div class="inputContainer">
+        <label for="switch" id="switchLabel">Show differential</label>
+        <label class="switch">
+            <input type="checkbox" id="switch">
+            <span class="switchSlider"></span>
+        </label>
+    </div>
+</div>

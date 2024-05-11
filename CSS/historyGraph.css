@@ -1,0 +1,21 @@
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 10px;
+}
+
+.line2 {
+    fill: none;
+    stroke: #a92929;
+    stroke-width: 5px;
+}
+
+#historyGraph {
+    position: fixed;
+    z-index: 1;
+    opacity: 1;
+    background-color: white;
+    border: 3px;
+    border-style: solid;
+}
+

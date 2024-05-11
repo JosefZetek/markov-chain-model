@@ -1,0 +1,47 @@
+
+.menu {
+    width: 140px;
+    z-index: 10000;
+    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    background-color: white;
+    display: none;
+
+}
+
+
+.menu-options {
+    list-style: none;
+    padding: 10px 0;
+    z-index: 10000;
+    margin: 0px;
+}
+
+.menu-option {
+    font-weight: 500;
+    z-index: 10000;
+    font-size: 14px;
+    padding: 10px 20px 10px 10px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-option:hover {
+    background-color: lightgray;
+}
+
+
+.wrapper {
+    position: relative;
+    height: 100%;
+}
+
+#overPanel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
