@@ -40,13 +40,27 @@ export class LibraryPanel {
         this.container.innerHTML = '';
         this.addSearchBar();
         this.initFileListDisplay();
-        this.cy = this.initializeCytoscape()
         this.updateFileDisplay(this.fileList);
     }
 
-    private initializeCytoscape(): cytoscape.Core {
-        let graphConstruction = new GraphConstruction();
-        let cy = graphConstruction.initGraph("graph-preview-container");
+    private initializeCytoscape(data : string): cytoscape.Core {
+        let jsonData = JSON.parse(data);
+
+        let cy = cytoscape({
+            container: document.getElementById('graph-preview-container'),
+            elements: jsonData.graphData.elements,
+            style: jsonData.graphData.style,
+            zoom: jsonData.graphData.zoom/3.5,
+            minZoom: jsonData.graphData.minZoom,
+            maxZoom: jsonData.graphData.maxZoom,
+            pan: {x: 0, y: 100},
+            zoomingEnabled: false,
+            userZoomingEnabled: false,
+            panningEnabled: false,
+            userPanningEnabled: false,
+            boxSelectionEnabled: jsonData.graphData.boxSelectionEnabled
+        });
+
         this.graphStyler = new GraphStyler(cy);
         return cy;
     }
@@ -73,9 +87,10 @@ export class LibraryPanel {
         const graphPreviewContainer = document.createElement("div");
         graphPreviewContainer.id = "graph-preview-container";
         graphPreviewContainer.style.width = "100%";
-        graphPreviewContainer.style.height = "70%";
+        graphPreviewContainer.style.height = "250px";
         graphPreviewContainer.style.border = "1px solid #ccc";
         graphPreviewContainer.style.paddingTop = "20px";
+        graphPreviewContainer.style.backgroundColor = "#fff"
         this.container.appendChild(graphPreviewContainer);
     }
 
@@ -153,12 +168,14 @@ export class LibraryPanel {
 
         let data: ExportedData = JSON.parse(jsonText);
 
+        this.cy = this.initializeCytoscape(jsonText);
 
         console.log(data.graphData);
         this.cy.json(data.graphData);
-        let animationActions = new AnimationActions(this.cy, this.graphStyler, this.nodeActions);
-        animationActions.resetAnimation();
+        //let animationActions = new AnimationActions(this.cy, this.graphStyler, this.nodeActions);
+        //animationActions.resetAnimation();
         this.setupCytoscape();
+
     }
     // I need a way to get the name form the json files
     private loadGraph(navbarActions: NavbarMenuActions, jsonText: string ) {

@@ -5,6 +5,9 @@ import '../../CSS/historyGraph.css';
  * Trida se stara o zobrazeni grafu s historii pravdepodobnosti u stavu. Pro zobrazeni grafu se pouziva knihovna D3.js
  */
 export class HistoryGraph {
+
+    private nodeIsMoved: boolean = false;
+
     private cy: cytoscape.Core;
     constructor(cy: cytoscape.Core) {
         this.cy = cy;
@@ -15,6 +18,7 @@ export class HistoryGraph {
     public registerTooltipListener() {
         let toolTipDiv: HTMLDivElement;
         this.cy.on('mouseover', mouseOverEvent => {
+
             if (mouseOverEvent.target !== this.cy && (<cytoscape.Singular>mouseOverEvent.target).isNode()) {
                 let target = mouseOverEvent.target;
                 let data = <number[]>target.data("history");
@@ -36,7 +40,7 @@ export class HistoryGraph {
             if ((<cytoscape.Singular>mouseOverEvent.target).isEdge())
                 return;
 
-            if(toolTipDiv !== undefined)
+            if(toolTipDiv == undefined)
                 return;
 
             toolTipDiv.remove();
